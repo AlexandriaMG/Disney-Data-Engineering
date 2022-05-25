@@ -1,0 +1,32 @@
+#Alexandria Morales-Garcia
+
+#What are the elements in table X?
+select * from X;
+
+#What are all the critcal cases?
+select SUMMARY from X
+where SEVERITY = 'CRITICAL';
+
+#Can we run this more efficiently?
+select SUMMARY from X
+where SEVERITY = 'CRITICAL'
+Group by SUMMARY;
+
+#What are the cases with -ound?
+select SEVERITY, SUMMARY from X
+where SUMMARY like '%ound%';
+
+#How many cases are there based on severity and application?
+select count(*), SEVERITY, APPLICATION
+from X 
+Group by SEVERITY, APPLICATION
+Order by APPLICATION;
+
+
+#Can you make a view for PMs?
+CREATE VIEW PM AS
+select SUMMARY, SEVERITY, STATUS, APPLICATION, SUBAPPLICATION, ENVIRONMENT
+from X; 
+
+Select * from PM;
+
